@@ -1,3 +1,4 @@
+import bs4
 import requests
 
 
@@ -18,14 +19,20 @@ def scrape_weather(zip):
 
     url = 'https://www.wunderground.com/cgi-bin/findweather/getForecast?query={}'.format(zip)
     response = requests.get(url)
-    print(response.text[:250])
 
+    #print(response.text[:250])
+
+
+def get_weather_from_html(html):
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    soup.fin
 
 
 def main():
     print_header()
     zip = gather_input()
     scrape_weather(zip)
+    get_weather_from_html(html)
 
 
 if __name__ == '__main__':
